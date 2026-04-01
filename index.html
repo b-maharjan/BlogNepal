@@ -88,7 +88,7 @@
             which makes Nepal tourism more than just sightseeing. Nepal weather is also cool year-round. Though the best time to visit in Nepalis October to November and March to 
             April. During fall, when the skies become clear and the Nepal temperature moderates, travellers flock to its various mountain peaks to trek.  Meanwhile, spring is ideal 
             for venturing into the wildlife parks of this country. The cities in this country, which act as gateways to various tourist attractions, also offer travellers a taste of 
-            the country’s diverse cultures and architecture. They include Kathmandu, Pokhara, Lumbini, Janakpur, Patan, Bharatpur, Biratnagar, Dharan, Bhaktapur, and Butwal.</p>
+            the country's diverse cultures and architecture. They include Kathmandu, Pokhara, Lumbini, Janakpur, Patan, Bharatpur, Biratnagar, Dharan, Bhaktapur, and Butwal.</p>
         <div class="row">
             <div class="places-col">
                 <img src="images/kathmandu.jfif" height=540 width=400>
@@ -168,15 +168,15 @@
 
     <section class="culture">
         <h5>Cultures</h5>
-        <p>About 80 percent of Nepal’s residents are Hindu, 
+        <p>About 80 percent of Nepal's residents are Hindu, 
             10 percent are Buddhist, and the rest are a mixed bag.
              The major religious festivals are a cross-pollination 
-             of both Hinduism and Buddhism. You’ll see as many Hindu 
+             of both Hinduism and Buddhism. You'll see as many Hindu 
              symbols and temples around Nepal as you will statues and
               devotions to the Buddha. If you want to be respectful
                in Nepal, there are a few golden rules: 
-            Don’t touch people on the head (the most sacred part of the body), 
-            don’t point with your finger (use a flat hand or your chin), don’t 
+            Don't touch people on the head (the most sacred part of the body), 
+            don't point with your finger (use a flat hand or your chin), don't 
             eat or pass food with your left hand (considered dirty and unhygienic), 
             show respect by using both hands to give or receiving something 
             (including money), remove your shoes before entering a temple or 
@@ -207,11 +207,11 @@
              English is a secondary language spoken mostly in large cities like Kathmandu. 
              Outside Kathmandu, English is spoken less, but getting around is still manageable. 
              Simply smile and say Namaste, which is a traditional Hindu greeting meaning, essentially, 
-             “the divine spirit with me, bows to the divine spirit within you” or “my soul 
-             recognizes your soul.” You’ll say Namaste to everyone, and everyone will say it to you, 
-             but unlike at the end of your yoga class back home, here it’s used for pretty much everything
-              — a greeting, goodbye, and even “pardon me, you’re in my way.” When saying Namaste, you hold 
-              your hands as if in prayer. Another good word to know is “thank you,” dhanyavad, pronounced: dahn-ya-vahd.</p>
+             "the divine spirit with me, bows to the divine spirit within you" or "my soul 
+             recognizes your soul." You'll say Namaste to everyone, and everyone will say it to you, 
+             but unlike at the end of your yoga class back home, here it's used for pretty much everything
+              — a greeting, goodbye, and even "pardon me, you're in my way." When saying Namaste, you hold 
+              your hands as if in prayer. Another good word to know is "thank you," dhanyavad, pronounced: dahn-ya-vahd.</p>
             <div class="row">
                 <div class="language-col">
                     <img src="images/language1.jpg" height=540 width=320>
@@ -263,21 +263,42 @@
             </div>
         </section>
 
-
-
-
-
-
-
+    <!-- Overlay for closing menu when clicking outside -->
+    <div class="menu-overlay" id="menuOverlay"></div>
 
     <script>
-        var navLinks = document.getElementById("navLinks")
+        var navLinks = document.getElementById("navLinks");
+        var menuOverlay = document.getElementById("menuOverlay");
+        var menuBar = document.querySelector(".fa-bars");
+        var menuClose = document.querySelector(".fa-times");
+
         function showMenu(){
             navLinks.style.right = "0";
+            menuOverlay.style.display = "block";
+            document.body.style.overflow = "hidden"; // Prevent scrolling when menu is open
         }
+
         function hideMenu(){
             navLinks.style.right = "-200px";
+            menuOverlay.style.display = "none";
+            document.body.style.overflow = "auto"; // Allow scrolling again
         }
+
+        // Close menu when clicking on overlay (outside the menu)
+        menuOverlay.addEventListener("click", hideMenu);
+
+        // Close menu when clicking on a menu item
+        var menuLinks = document.querySelectorAll(".nav-links ul li a");
+        menuLinks.forEach(link => {
+            link.addEventListener("click", hideMenu);
+        });
+
+        // Close menu when pressing Escape key
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape" && navLinks.style.right === "0px") {
+                hideMenu();
+            }
+        });
     </script>
 </body>
 </html>
