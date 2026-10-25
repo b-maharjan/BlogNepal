@@ -14,20 +14,31 @@
     
 </head>
 <body>
-    <section class="header" <p style="background-image: url(banner.jpg), linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)) ;"></p>
-        <nav>
-            <a href="index.html"><img src="logo.png"></a>
+    <section class="header" style="background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url('banner.jpg');">
+        <nav id="mainNav">
+            <a href="index.html"><img src="logo.png" alt="Blog Nepal logo"></a>
+            <div class="flag-badge" aria-label="Nepal flag" title="Nepal">
+                <img src="images/flag.jpg" alt="Nepal flag" onerror="this.style.display='none'; this.alt='Nepal flag image missing';">
+            </div>
+            <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">
+                <span class="hamburger" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
             <div class="nav-links" id="navLinks">
-                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <button class="close-menu" type="button" aria-label="Close menu">
+                    <span aria-hidden="true">×</span>
+                </button>
                 <ul>
-                    <li><a href="">HOME</a> </li>
-                    <li><a href="#places">PLACES</a> </li>
-                    <li><a href="#contact">CONTACT</a> </li>
+                    <li><a href="">HOME</a></li>
+                    <li><a href="#places">PLACES</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
                 </ul>
             </div>
-            <i class="fa fa-bars" onclick="showMenu()"></i>
         </nav>
-        <div class="container text-right">
+        <div class="header-content text-right">
             <div class="row">
               <div class="col">
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
@@ -270,14 +281,41 @@
 
 
 
+
     <script>
-        var navLinks = document.getElementById("navLinks")
-        function showMenu(){
-            navLinks.style.right = "0";
-        }
-        function hideMenu(){
-            navLinks.style.right = "-200px";
-        }
+        (function () {
+            const nav = document.getElementById('mainNav');
+            const menuButton = nav.querySelector('.menu-button');
+            const closeButton = nav.querySelector('.close-menu');
+            const navLinks = nav.querySelector('.nav-links');
+            const navLinksList = navLinks.querySelectorAll('a');
+
+            function setMenuState(isOpen) {
+                nav.classList.toggle('open', isOpen);
+                navLinks.classList.toggle('open', isOpen);
+                menuButton.setAttribute('aria-expanded', String(isOpen));
+            }
+
+            menuButton.addEventListener('click', function () {
+                setMenuState(true);
+            });
+
+            closeButton.addEventListener('click', function () {
+                setMenuState(false);
+            });
+
+            navLinksList.forEach(function (link) {
+                link.addEventListener('click', function () {
+                    setMenuState(false);
+                });
+            });
+
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 700) {
+                    setMenuState(false);
+                }
+            });
+        })();
     </script>
 </body>
 </html>
