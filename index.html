@@ -279,7 +279,7 @@
             });
         })();
             (function () {
-                const visitCards = document.querySelectorAll('.visit-col');
+                const revealCards = document.querySelectorAll('.visit-col, .places-col');
                 const mobileQuery = window.matchMedia('(max-width: 700px)');
                 let revealObserver;
 
@@ -290,14 +290,14 @@
                     }
 
                     if (!mobileQuery.matches) {
-                        visitCards.forEach(function (card) {
+                        revealCards.forEach(function (card) {
                             card.classList.remove('is-visible');
                         });
                         return;
                     }
 
                     if (!('IntersectionObserver' in window)) {
-                        visitCards.forEach(function (card) {
+                        revealCards.forEach(function (card) {
                             card.classList.add('is-visible');
                         });
                         return;
@@ -315,7 +315,7 @@
                         threshold: [0, 0.55]
                     });
 
-                    visitCards.forEach(function (card) {
+                    revealCards.forEach(function (card) {
                         revealObserver.observe(card);
                     });
                 }
