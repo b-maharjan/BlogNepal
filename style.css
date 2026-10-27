@@ -42,6 +42,58 @@ nav{
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
 }
+.hero-contact{
+    position: fixed;
+    left: 50%;
+    bottom: 18px;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: calc(100vw - 32px);
+    padding: 9px 16px;
+    color: #fff;
+    background: rgba(0,0,0,0.22);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.22);
+    transform: translateX(-50%);
+    opacity: 1;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.hero-contact.is-hidden{
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 10px);
+}
+.hero-contact-link,
+.hero-contact-handle{
+    color: #fff;
+    font-size: 13px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.hero-contact-link{
+    font-weight: 600;
+}
+.hero-contact-link:hover{
+    color: #fff;
+    text-decoration: underline;
+}
+.hero-contact-icons{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.hero-contact-icons svg{
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
 nav img{
     width: 110px;
 }
@@ -117,9 +169,25 @@ nav img{
         padding-top: 110px;
     }
     .header-content{
+        width: 90%;
         display: flex;
         align-items: center;
         min-height: calc(100vh - 110px);
+    }
+    .header-content .row{
+        width: 100%;
+    }
+    .header-content .row > .col:first-child{
+        flex: 0 0 55%;
+        max-width: 55%;
+    }
+    .header-content .row > .col:last-child{
+        flex: 0 0 45%;
+        max-width: 45%;
+    }
+    .header .carousel-item,
+    .header .carousel-item img{
+        height: 500px;
     }
 }
 .col h1{
@@ -176,6 +244,18 @@ nav .fa{
     color: #fff;
 }
 @media(max-width: 700px){
+
+    .hero-contact{
+        bottom: 12px;
+        gap: 10px;
+        padding: 8px 12px;
+    }
+    .hero-contact-handle{
+        display: none;
+    }
+    .hero-contact-icons{
+        gap: 8px;
+    }
 
     nav img {
         width: 75px;
@@ -306,6 +386,13 @@ nav .fa{
     border-radius: 10px;
 }
 
+@media(max-width: 700px){
+    .header .carousel-item,
+    .header .carousel-item img {
+        height: 260px;
+    }
+}
+
  .places{
      width: 90%;
      margin: auto;
@@ -355,7 +442,7 @@ nav .fa{
      flex-basis: 31%;
     background: #bdbdbd;
      border-radius: 10px;
-     box-shadow: 0 0 14px rgba(255,255,255,0.08), 0 6px 18px rgba(0,0,0,0.22);
+     box-shadow: 0 0 0 1px rgba(255,255,255,0.18), 0 0 18px rgba(255,255,255,0.12), 0 8px 22px rgba(0,0,0,0.3);
      margin-bottom: 5%;
      padding: 20px 12px;
      box-sizing: border-box;
@@ -372,7 +459,7 @@ nav .fa{
      font-size: 20px;
  }
  .places-col:hover{
-     box-shadow: 0 0 18px rgba(255,255,255,0.13), 0 10px 26px rgba(0,0,0,0.32);
+     box-shadow: 0 0 0 1px rgba(255,255,255,0.26), 0 0 22px rgba(255,255,255,0.17), 0 12px 28px rgba(0,0,0,0.4);
  }
  
  @media(max-width: 700px){
@@ -544,7 +631,7 @@ nav .fa{
     height: 260px;
     object-fit: cover;
     border-radius: 10px;
-    box-shadow: 0 0 16px rgba(255,255,255,0.10), 0 6px 18px rgba(0,0,0,0.28);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.22), 0 0 20px rgba(255,255,255,0.14), 0 8px 22px rgba(0,0,0,0.34);
 }
 .culture-col p{
     padding: 0;

@@ -86,6 +86,11 @@
               </div>
             </div>
         </div>
+        <aside class="hero-contact" aria-label="Contact shortcuts">
+            <a class="hero-contact-link" href="#contact">Contact Us</a>
+            <span class="hero-contact-handle">blog/maharjanbijay</span>
+            <div class="hero-contact-icons" aria-hidden="true"></div>
+        </aside>
         
     </section>
 
@@ -317,6 +322,26 @@
 
                 configureVisitReveal();
                 mobileQuery.addEventListener('change', configureVisitReveal);
+            })();
+            (function () {
+                const contactBar = document.querySelector('.hero-contact');
+                const footerIcons = document.querySelector('.contact-col');
+                const contactIconRow = contactBar.querySelector('.hero-contact-icons');
+                const contactLink = contactBar.querySelector('.hero-contact-link');
+
+                footerIcons.querySelectorAll('svg').forEach(function (icon) {
+                    contactIconRow.appendChild(icon.cloneNode(true));
+                });
+
+                function updateContactBar() {
+                    const isHidden = window.scrollY > 80;
+                    contactBar.classList.toggle('is-hidden', isHidden);
+                    contactBar.setAttribute('aria-hidden', String(isHidden));
+                    contactLink.tabIndex = isHidden ? -1 : 0;
+                }
+
+                window.addEventListener('scroll', updateContactBar, { passive: true });
+                updateContactBar();
             })();
     </script>
 </body>
